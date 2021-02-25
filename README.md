@@ -37,6 +37,6 @@ For all available configs, please refer to `config.yaml`
 ## Demo run
 ```
 mkdir input
-wget http://www.bio8.cs.hku.hk/dataset/ECNano/HG001_ECNano_dataset1.fastq
+wget http://www.bio8.cs.hku.hk/dataset/ECNano/HG001_ECNano_dataset1.fastq -P input
 snakemake --cores 24
 ```
