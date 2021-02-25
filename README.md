@@ -26,4 +26,7 @@ git clone --depth 1 https://github.com/HKU-BAL/ECNano
 cd ECNano
 # install guppy
 wget https://mirror.oxfordnanoportal.com/software/analysis/ont-guppy_3.4.4_linux64.tar.gz && tar -xf ont-guppy_3.4.4_linux64.tar.gz
+
+# run all
+snakemake --cores ${num}
 ```
