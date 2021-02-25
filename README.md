@@ -20,7 +20,7 @@ conda create -n clair-ensemble -c bioconda -y clair
 conda activate clair-ensemble
 pypy3 -m ensurepip
 pypy3 -m pip install --no-cache-dir intervaltree
-conda install porechop minimap2 samtools snakemake perl-local-lib
+conda install porechop minimap2 samtools snakemake
 
 git clone --depth 1 https://github.com/HKU-BAL/ECNano
 cd ECNano
