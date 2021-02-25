@@ -1,0 +1,16 @@
+out_dir:
+    - ecnano_output
+gpu_device: 0
+minionqc: False
+discard_middle: True
+threads: 48
+BED_FILE_PATH: "bed/mes_with_gene.hg38_nochr.bed"
+REFERENCE_FASTA_FILE_PATH: "reference/GRCh38_no_alt_analysis_set.no_chr.fasta"
+CLAIR: "bin/Clair-ensemble/Clair.beta.ensemble.cpu/clair.py"
+CLAIR_MODELS:
+    - "bin/Clair-ensemble/model/model-000016" # hg001 + hg002 + hg002hd + hg003 + hg004
+    - "bin/Clair-ensemble/model/model-000018" # hg001 + hg002
+    - "bin/Clair-ensemble/model/model-000019" # hg001 + hg002 + hg003 + hg004
+    - "bin/Clair-ensemble/model/model-000013" # hg001 + hg003 + hg004
+ENSEMBLE_CPP_EXECUTABLE: "bin/Clair-ensemble/ensemble"
+
