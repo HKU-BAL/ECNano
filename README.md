@@ -27,9 +27,8 @@ git clone --depth 1 https://github.com/HKU-BAL/ECNano
 # install guppy if input fast5
 cd ECNano
 wget https://mirror.oxfordnanoportal.com/software/analysis/ont-guppy_3.4.4_linux64.tar.gz && tar -xf ont-guppy_3.4.4_linux64.tar.gz
-
-# run ECNano workflow
+```
+## ECNano workflow Usage
 snakemake --cores ${num} [--config discard_middle=True|False minionqc=True|False]
 
-For all available configs, please refer to config.yaml
-```
+For all available configs, please refer to `config.yaml`
