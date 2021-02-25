@@ -30,6 +30,6 @@ wget https://mirror.oxfordnanoportal.com/software/analysis/ont-guppy_3.4.4_linux
 ```
 ## ECNano workflow Usage
 ```
-snakemake --cores ${num} [--config discard_middle=True|False minionqc=True|False]
+snakemake --cores ${num} [--config discard_middle=True|False minionqc=True|False gpu_device=${num}]
 ```
 For all available configs, please refer to `config.yaml`
