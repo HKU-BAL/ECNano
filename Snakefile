@@ -5,7 +5,15 @@ rule all:
     input:
         expand("{out_dir}/Clair_ensemble_out",out_dir=config["out_dir"])
 
-rule basecalling:
+rule fastq_in:
+    input:
+        "fastq"
+    output:
+        expand("{out_dir}/all.pass.fq",out_dir=config["out_dir"])
+    shell:
+        """bioawk -c fastx '{{if (meanqual($qual)>{config[qual_threshold]}) print "@"$name" "$comment"\n"$seq"\n+\n"$qual}}'"""
+
+rule fast5_in:
     input: 
         "fast5"
     output:
@@ -17,7 +25,7 @@ rule analysis:
     input:
         ".basecalling.done"
     output:
-        expand("{out_dir}/Guppy_out/all.pass.fq",out_dir=config["out_dir"])
+        expand("{out_dir}/all.pass.fq",out_dir=config["out_dir"])
     shell:
         "cat {config[out_dir]}/Guppy_out/sequencing_summary.txt | cut -f 15 | "
         """awk '{{NR>2; sum += $1; n++ }} END {{ if (n > 0) print "[INFO] *average read quality: " sum / n; }}';"""
@@ -37,7 +45,7 @@ if config["minionqc"]==True:
 
 rule porechop:
     input:
-        expand("{out_dir}/Guppy_out/all.pass.fq",out_dir=config["out_dir"])
+        expand("{out_dir}/all.pass.fq",out_dir=config["out_dir"])
     output:
         expand("{out_dir}/Porechop_out/guppy_pass.porechop.fastq",out_dir=config["out_dir"])
     run:
@@ -64,7 +72,7 @@ rule clair_ensemble:
         bam=expand("{out_dir}/Minimap2_out/guppy_pass.porechop.minimap2_hg38.sorted.bam",out_dir=config["out_dir"]),
         bai=expand("{out_dir}/Minimap2_out/guppy_pass.porechop.minimap2_hg38.sorted.bam.bai",out_dir=config["out_dir"])
     output:
-        expand("{out_dir}/Clair_ensemble_out",out_dir=config["out_dir"])
+        directory(expand("{out_dir}/Clair_ensemble_out",out_dir=config["out_dir"]))
     run:
         config["CLAIR_MODELS"]= [''.join([os.getcwd(),'/',path]) for path in config["CLAIR_MODELS"]]
         clair_models_delim=','.join(config["CLAIR_MODELS"])

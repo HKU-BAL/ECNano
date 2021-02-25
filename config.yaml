@@ -1,6 +1,7 @@
 out_dir:
     - ecnano_output
 gpu_device: 0
+qual_threshold: 3
 minionqc: False
 discard_middle: True
 threads: 48
