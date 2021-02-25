@@ -30,6 +30,13 @@ wget https://mirror.oxfordnanoportal.com/software/analysis/ont-guppy_3.4.4_linux
 ```
 ## ECNano workflow Usage
 ```
-snakemake --cores INT [--config discard_middle=True|False minionqc=True|False gpu_device=INT]
+snakemake --cores INT [--config discard_middle=True|False minionqc=True|False gpu_device=INT in_dir=DIR out_dir=DIR]
 ```
 For all available configs, please refer to `config.yaml`
+
+## Demo run
+```
+mkdir input
+wget http://www.bio8.cs.hku.hk/dataset/ECNano/HG001_ECNano_dataset1.fastq
+snakemake --cores 24
+```
