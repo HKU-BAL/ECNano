@@ -23,10 +23,13 @@ pypy3 -m pip install --no-cache-dir intervaltree
 conda install porechop minimap2 samtools snakemake
 
 git clone --depth 1 https://github.com/HKU-BAL/ECNano
+
+# install guppy if input fast5
 cd ECNano
-# install guppy
 wget https://mirror.oxfordnanoportal.com/software/analysis/ont-guppy_3.4.4_linux64.tar.gz && tar -xf ont-guppy_3.4.4_linux64.tar.gz
 
-# run all
-snakemake --cores ${num}
+# run ECNano workflow
+snakemake --cores ${num} [--config discard_middle=True|False minionqc=True|False]
+
+For all available configs, please refer to config.yaml
 ```
