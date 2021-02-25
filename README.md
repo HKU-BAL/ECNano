@@ -15,6 +15,7 @@ conda config --add channels defaults
 conda config --add channels bioconda
 conda config --add channels conda-forge
 
+# create the clair-ensemble environment and install dependencies
 conda create -n clair-ensemble -c bioconda -y clair
 conda activate clair-ensemble
 pypy3 -m ensurepip
@@ -23,5 +24,6 @@ conda install porechop minimap2 samtools snakemake perl-local-lib
 
 git clone --depth 1 https://github.com/HKU-BAL/ECNano
 cd ECNano
+# install guppy
 wget https://mirror.oxfordnanoportal.com/software/analysis/ont-guppy_3.4.4_linux64.tar.gz && tar -xf ont-guppy_3.4.4_linux64.tar.gz
 ```
