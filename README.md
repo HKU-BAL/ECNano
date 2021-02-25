@@ -29,6 +29,7 @@ cd ECNano
 wget https://mirror.oxfordnanoportal.com/software/analysis/ont-guppy_3.4.4_linux64.tar.gz && tar -xf ont-guppy_3.4.4_linux64.tar.gz
 ```
 ## ECNano workflow Usage
+```
 snakemake --cores ${num} [--config discard_middle=True|False minionqc=True|False]
-
+```
 For all available configs, please refer to `config.yaml`
