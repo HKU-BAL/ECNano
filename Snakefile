@@ -75,7 +75,7 @@ rule clair_ensemble:
     run:
         config["CLAIR_MODELS"]= [''.join([os.getcwd(),'/',path]) for path in config["CLAIR_MODELS"]]
         clair_models_delim=','.join(config["CLAIR_MODELS"])
-        shell("./run_Clair_ensemble.sh -b {input.bam} -d {config[BED_FILE_PATH]} -r {config[REFERENCE_FASTA_FILE_PATH]} -c {config[CLAIR]} -m {clair_models_delim} -e {config[ENSEMBLE_CPP_EXECUTABLE]} -t {config[threads]} -o {output}")
+        shell("./bin/run_Clair_ensemble.sh -b {input.bam} -d {config[BED_FILE_PATH]} -r {config[REFERENCE_FASTA_FILE_PATH]} -c {config[CLAIR]} -m {clair_models_delim} -e {config[ENSEMBLE_CPP_EXECUTABLE]} -t {config[threads]} -o {output}")
 
 
 
