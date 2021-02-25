@@ -11,7 +11,7 @@ rule fastq_in:
     output:
         expand("{out_dir}/all.pass.fq",out_dir=config["out_dir"])
     shell:
-        """bioawk -c fastx '{{if (meanqual($qual)>{config[qual_threshold]}) print "@"$name" "$comment"\n"$seq"\n+\n"$qual}}'"""
+        """bioawk -c fastx '{{if (meanqual($qual)>{config[qual_threshold]}) print "@"$name" "$comment"\\n"$seq"\\n+\\n"$qual}}' {input}/*q > {output} """
 
 rule fast5_in:
     input: 
@@ -40,8 +40,7 @@ if config["minionqc"]==True:
         output:
             expand("{out_dir}/MinIONQC_out",out_dir=config["out_dir"])
         run:
-        #if config["minionqc"]==True:
-            shell("MinIONQC.R -i {input} -o {output} -p {config[threads]}")
+            directory(shell("MinIONQC.R -i {input} -o {output} -p {config[threads]}"))
 
 rule porechop:
     input:
