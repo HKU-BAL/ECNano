@@ -5,21 +5,24 @@ configfile: "config.yaml"
 rule all:
     input:
         expand("{out_dir}/Clair_ensemble_out",out_dir=config["out_dir"])
-fastq_list=glob("input/*.f*q")
+
+in_dir=config["in_dir"]
+fastq_list=glob(f"{in_dir}/*.f*q")
+fast5_list=glob(f"{in_dir}/*.f*5")
+
 if fastq_list:
     rule fastq_in:
         input:
-            "input"
+            expand("{in_dir}",in_dir=config["in_dir"])
         output:
             fq=expand("{out_dir}/all.pass.fq",out_dir=config["out_dir"])
         shell:
             """bioawk -c fastx '{{if (meanqual($qual)>{config[qual_threshold]}) print "@"$name" "$comment"\\n"$seq"\\n+\\n"$qual}}' {input}/*.f*q > {output.fq} """
 
-fast5_list=glob("input/*.f*5")
 if fast5_list:
     rule fast5_in:
         input: 
-            "input"
+            expand("{in_dir}",in_dir=config["in_dir"])
         output:
             expand("{out_dir}/all.pass.fq",out_dir=config["out_dir"])
         shell:
@@ -73,7 +76,10 @@ rule align_index:
 rule clair_ensemble:
     input:
         bam=expand("{out_dir}/Minimap2_out/guppy_pass.porechop.minimap2_hg38.sorted.bam",out_dir=config["out_dir"]),
-        bai=expand("{out_dir}/Minimap2_out/guppy_pass.porechop.minimap2_hg38.sorted.bam.bai",out_dir=config["out_dir"])
+        bai=expand("{out_dir}/Minimap2_out/guppy_pass.porechop.minimap2_hg38.sorted.bam.bai",out_dir=config["out_dir"]),
+        bed=expand("{bed}",bed=config["BED_FILE_PATH"]),
+        fa=expand("{ref}",ref=config["REFERENCE_FASTA_FILE_PATH"]),
+        fai=expand("{ref}.fai",ref=config["REFERENCE_FASTA_FILE_PATH"])
     output:
         directory(expand("{out_dir}/Clair_ensemble_out",out_dir=config["out_dir"]))
     run:
