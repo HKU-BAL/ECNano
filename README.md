@@ -30,7 +30,11 @@ wget https://mirror.oxfordnanoportal.com/software/analysis/ont-guppy_3.4.4_linux
 ```
 ## Workflow usage
 ```
-snakemake --cores INT [--config discard_middle=True|False minionqc=True|False gpu_device=INT in_dir=DIR out_dir=DIR]
+snakemake --cores INT [--config discard_middle=True|False 
+                                minionqc=True|False 
+                                gpu_device=INT 
+                                in_dir=DIR 
+                                out_dir=DIR]
 ```
 For all available configs, please refer to `config.yaml`
 
