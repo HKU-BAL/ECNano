@@ -34,7 +34,9 @@ snakemake --cores INT [--config discard_middle=True|False
                                 minionqc=True|False 
                                 gpu_device=INT 
                                 in_dir=DIR 
-                                out_dir=DIR]
+                                out_dir=DIR
+                                BED_FILE_PATH=PATH
+                                REFERENCE_FASTA_FILE_PATH=PATH]
 ```
 For all available configs, please refer to `config.yaml`
 
