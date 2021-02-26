@@ -42,5 +42,8 @@ For all available configs, please refer to `config.yaml`
 ```
 mkdir input
 wget http://www.bio8.cs.hku.hk/dataset/ECNano/HG001_ECNano_dataset1.fastq -P input
+mkdir reference
+wget http://www.bio8.cs.hku.hk/dataset/ECNano/GRCh38_no_alt_analysis_set.no_chr.fasta -P reference
+samtools faidx reference/GRCh38_no_alt_analysis_set.no_chr.fasta
 snakemake --cores 24
 ```
