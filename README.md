@@ -26,7 +26,7 @@ git clone --depth 1 https://github.com/HKU-BAL/ECNano
 
 # install guppy if input fast5
 cd ECNano
-wget https://mirror.oxfordnanoportal.com/software/analysis/ont-guppy_3.4.4_linux64.tar.gz && tar -xf ont-guppy_3.4.4_linux64.tar.gz
+curl -O https://mirror.oxfordnanoportal.com/software/analysis/ont-guppy_3.4.4_linux64.tar.gz && tar -xf ont-guppy_3.4.4_linux64.tar.gz
 ```
 ## Workflow usage
 ```
@@ -42,10 +42,9 @@ For all available configs, please refer to `config.yaml`
 
 ## Demo run
 ```
-mkdir input
-wget http://www.bio8.cs.hku.hk/dataset/ECNano/HG001_ECNano_dataset1.fastq -P input
-mkdir reference
-wget http://www.bio8.cs.hku.hk/dataset/ECNano/GRCh38_no_alt_analysis_set.no_chr.fasta -P reference
+mkdir input reference
+curl -o reference/GRCh38_no_alt_analysis_set.no_chr.fasta http://www.bio8.cs.hku.hk/dataset/ECNano/GRCh38_no_alt_analysis_set.no_chr.fasta \
+        input/HG001_ECNano_dataset1.fastq http://www.bio8.cs.hku.hk/dataset/ECNano/HG001_ECNano_dataset1.fastq
 samtools faidx reference/GRCh38_no_alt_analysis_set.no_chr.fasta
 snakemake --cores 24
 ```
