@@ -4,18 +4,18 @@ do
     case "${option}"
         in
         # assumed given bam file is sorted and indexed
-        b) BAM_FILE_PATH=`realpath ${OPTARG}`;;
-        d) BED_FILE_PATH=`realpath ${OPTARG}`;;
-        r) REFERENCE_FASTA_FILE_PATH=`realpath ${OPTARG}`;;
-        c) CLAIR=`realpath ${OPTARG}`;;
+        b) BAM_FILE_PATH=`readlink -f ${OPTARG}`;;
+        d) BED_FILE_PATH=`readlink -f ${OPTARG}`;;
+        r) REFERENCE_FASTA_FILE_PATH=`readlink -f ${OPTARG}`;;
+        c) CLAIR=`readlink -f ${OPTARG}`;;
         m) old_IFS=$IFS
            echo $IFS
            IFS=','
            CLAIR_MODELS=($OPTARG)
            IFS=${old_IFS};;
-        e) ENSEMBLE_CPP_EXECUTABLE=`realpath ${OPTARG}`;;
+        e) ENSEMBLE_CPP_EXECUTABLE=`readlink -f ${OPTARG}`;;
         t) PARALLEL_THREADS=${OPTARG};;
-        o) ROOT_FOLDER_PATH=`realpath ${OPTARG}`;;
+        o) ROOT_FOLDER_PATH=`readlink -f ${OPTARG}`;;
     esac
 done
 
