@@ -7,6 +7,11 @@ Having a high sequencing error of ONT and limited throughput from a single MinIO
 
 ECNano is an out-of-the-box workflow comprising (1) a wet-lab protocol for ONT target enrichment sequencing and (2) a downstream variant detection workflow, Clair-ensemble. The ECNano wet-lab protocol was optimized to perform long-read target enrichment and ONT library preparation to stably generate high-quality MES data with adequate coverage. The subsequent variant-calling workflow, Clair-ensemble, adopted a fast RNN-based variant caller, Clair, and was optimized for target enrichment data. ECNano was evaluated on both reference DNA samples and patient samples.
 
+## Dependencies
+```
+gcc 5
+```
+
 ## Build an anaconda virtual environment
 Please install anaconda using the installation guide at https://docs.anaconda.com/anaconda/install/
 ```
