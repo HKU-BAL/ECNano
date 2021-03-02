@@ -24,6 +24,9 @@ conda install porechop minimap2 samtools snakemake bioawk
 
 git clone --depth 1 https://github.com/HKU-BAL/ECNano
 
+# unset the perl env variables pointing to different perl installations
+unset PERL5LIB PERL_LOCAL_LIB_ROOT 
+
 # install guppy if input fast5
 cd ECNano
 curl -O https://mirror.oxfordnanoportal.com/software/analysis/ont-guppy_3.4.4_linux64.tar.gz && tar -xf ont-guppy_3.4.4_linux64.tar.gz
