@@ -47,7 +47,7 @@ For all available configs, please refer to `config.yaml`
 ```
 mkdir input reference
 curl -o reference/GRCh38_no_alt_analysis_set.no_chr.fasta http://www.bio8.cs.hku.hk/dataset/ECNano/GRCh38_no_alt_analysis_set.no_chr.fasta \
-        input/HG001_ECNano_dataset1.fastq http://www.bio8.cs.hku.hk/dataset/ECNano/HG001_ECNano_dataset1.fastq
+     -o input/HG001_ECNano_dataset1.fastq http://www.bio8.cs.hku.hk/dataset/ECNano/HG001_ECNano_dataset1.fastq
 samtools faidx reference/GRCh38_no_alt_analysis_set.no_chr.fasta
 snakemake --cores 24
 ```
