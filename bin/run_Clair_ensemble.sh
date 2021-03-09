@@ -9,7 +9,6 @@ do
         r) REFERENCE_FASTA_FILE_PATH=`readlink -f ${OPTARG}`;;
         c) CLAIR=`readlink -f ${OPTARG}`;;
         m) old_IFS=$IFS
-           echo $IFS
            IFS=','
            CLAIR_MODELS=($OPTARG)
            IFS=${old_IFS};;
