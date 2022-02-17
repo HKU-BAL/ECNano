@@ -23,7 +23,7 @@ conda create -n clair-ensemble -c bioconda -y clair
 conda activate clair-ensemble
 pypy3 -m ensurepip
 pypy3 -m pip install --no-cache-dir intervaltree
-conda install porechop minimap2 samtools snakemake bioawk
+conda install porechop minimap2 samtools==1.9 snakemake bioawk parallel
 
 git clone --depth 1 https://github.com/HKU-BAL/ECNano
 
