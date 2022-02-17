@@ -18,7 +18,7 @@ do
     esac
 done
 
-DIR_PATH=`pwd`
+SCRIPT_DIR_PATH=`dirname readlink -f $0`
 NO_OF_CLAIR_MODELS=${#CLAIR_MODELS[@]}
 DATE_TIME=`date "+%Y%m%d_%H%M%S"`
 WORKING_DIRECTORY="${ROOT_FOLDER_PATH}/${DATE_TIME}"
@@ -106,7 +106,7 @@ done
 
 cd ${WORKING_DIRECTORY}
 vcfcat ${VCF_OUTPUT_FOLDER}/*.vcf | sort -k1,1V -k2,2n > snp_and_indel.vcf
-cat snp_and_indel.vcf | python ${DIR_PATH}/bin/Clair-ensemble/Clair.beta.ensemble.cpu/clair/post_processing/overlap_variant.py > snp_and_indel.filtered.vcf
+cat snp_and_indel.vcf | python ${SCRIPT_DIR_PATH}/Clair-ensemble/Clair.beta.ensemble.cpu/clair/post_processing/overlap_variant.py > snp_and_indel.filtered.vcf
 
 
 
