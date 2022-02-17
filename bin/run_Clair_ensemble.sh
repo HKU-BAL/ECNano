@@ -18,7 +18,8 @@ do
     esac
 done
 
-SCRIPT_DIR_PATH=`dirname readlink -f $0`
+SCRIPT_PATH=`readlink -f $0`
+SCRIPT_DIR_PATH=`dirname $SCRIPT_PATH`
 NO_OF_CLAIR_MODELS=${#CLAIR_MODELS[@]}
 DATE_TIME=`date "+%Y%m%d_%H%M%S"`
 WORKING_DIRECTORY="${ROOT_FOLDER_PATH}/${DATE_TIME}"
