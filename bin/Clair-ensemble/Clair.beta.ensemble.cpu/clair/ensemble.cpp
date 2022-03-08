@@ -69,14 +69,17 @@ int main(int argc, char* argv[]) {
         }
 
         tensor_map_iterator = tensor_map.find(key);
+        vector<string> tensor_str(v.begin()+3, v.begin()+3 + 33*8*4);
         if (tensor_map_iterator == tensor_map.end()) {
-            vector<string> tensor_str(v.begin()+3, v.begin()+3 + 33*8*4);
-
             vector<int> tensor;
             for (i = 0; i < tensor_str.size(); i++) {
                 tensor.push_back(int_from(tensor_str[i]));
             }
             tensor_map[key] = tensor;
+        } else {
+            for (i = 0; i < tensor_str.size(); i++) {
+                tensor_map[key][i] += int_from(tensor_str[i]);
+            }
         }
 
         vector<string> probabilities_str(v.begin()+3 + 33*8*4, v.end());
